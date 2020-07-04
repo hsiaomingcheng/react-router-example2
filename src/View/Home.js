@@ -1,5 +1,7 @@
 import React from 'react';
-import styled from 'styled-components';
+
+import Nav from '../Component/Nav';
+import Title from '../Component/Title';
 
 class Home extends React.Component {
     constructor(props) {
@@ -10,14 +12,12 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <Title>React-router練習</Title>
+                <Title name="Home - 首頁" />
+
+                <Nav />
             </div>
         );
     }
 }
 
 export default Home;
-
-const Title = styled.h1`
-    text-align: center;
-`;

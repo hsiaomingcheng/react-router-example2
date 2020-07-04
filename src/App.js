@@ -4,9 +4,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
 } from 'react-router-dom';
 import Home from './View/Home';
+import About from './View/About';
+import News from './View/News';
 
 class App extends Component {
     constructor(props) {
@@ -16,49 +17,17 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
-                <Router>
-                    <div>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/">Home</Link>
-                                </li>
-                                <li>
-                                    <Link to="/about">About</Link>
-                                </li>
-                                <li>
-                                    <Link to="/users">Users</Link>
-                                </li>
-                            </ul>
-                        </nav>
+            <Router>
+                <Switch>
+                    <Route path="/about" component={About} />
+                    <Route path="/news" component={News} />
+                    <Route path="/" component={Home} />
+                </Switch>
 
-                        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
-                        <Switch>
-                            <Route path="/about">
-                                <About />
-                            </Route>
-                            <Route path="/users">
-                                <Users />
-                            </Route>
-                            <Route path="/">
-                                <Home />
-                            </Route>
-                        </Switch>
-                    </div>
-                </Router>
-            </div>
+                <div className="App" />
+            </Router>
         );
     }
 }
 
 export default hot(module)(App);
-
-function About() {
-    return <h2>About</h2>;
-}
-
-function Users() {
-    return <h2>Users</h2>;
-}
